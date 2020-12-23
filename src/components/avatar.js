@@ -18,7 +18,8 @@ export default function avatar({ isOnline }) {
 const styles = StyleSheet.create({
     container: {
         width: 40,
-        height: 40
+        height: 40,
+        position: 'relative',
     },
     avatar: {
         width: '100%',

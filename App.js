@@ -25,6 +25,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 import TopNavigation from './src/components/topNavigation'
+import SearchBar from './src/components/searchBar'
 
 const App = () => {
   return (
@@ -36,6 +37,7 @@ const App = () => {
           contentInsetAdjustmentBehavior="automatic"
         >
           <TopNavigation />
+          <SearchBar />
         </ScrollView>
       </SafeAreaView>
     </>

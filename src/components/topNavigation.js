@@ -4,6 +4,7 @@ import { H1, P } from './typography'
 import Icon from 'react-native-vector-icons/Ionicons'
 
 import Avatar from './avatar'
+import SearchBar from './searchBar'
 
 export default function topNavigation() {
     return (
