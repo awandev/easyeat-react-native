@@ -11,8 +11,9 @@ export default function searchBar() {
                 <P style={styles.searchText}>Search for resturant, dishes...</P>
             </Pressable>
             <TouchableNativeFeedback
-                background={TouchableNativeFeedback.SelectableBackground()}>
-                <View style={styles.searchButton}>
+                background={TouchableNativeFeedback.SelectableBackground()}
+            >
+                <View>
                     <Icon name="options-outline" size={20} color="#8f8f8f" />
                 </View>
             </TouchableNativeFeedback>

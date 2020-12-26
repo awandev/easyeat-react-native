@@ -26,6 +26,8 @@ import {
 
 import TopNavigation from './src/components/topNavigation'
 import SearchBar from './src/components/searchBar'
+import CategoryListItem from './src/components/categoryListItem';
+import CategoryList from './src/components/categoryList';
 
 const App = () => {
   return (
@@ -38,6 +40,8 @@ const App = () => {
         >
           <TopNavigation />
           <SearchBar />
+
+          <CategoryList />
         </ScrollView>
       </SafeAreaView>
     </>
