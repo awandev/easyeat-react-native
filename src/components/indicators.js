@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React, { useEffect, useState } from 'react';
+import { StyleSheet, View } from 'react-native';
 
 export default function Indicators({ currentIndex, carouselSize }) {
-
     const [indicators, setIndicators] = useState([]);
+
     useEffect(() => {
         const mIndicators = [];
 
@@ -20,10 +20,7 @@ export default function Indicators({ currentIndex, carouselSize }) {
         setIndicators(mIndicators);
     }, [currentIndex, carouselSize]);
 
-
-    return (
-        <View style={styles.indicatorContainer} children={indicators} />
-    )
+    return <View style={styles.indicatorContainer} children={indicators} />;
 }
 
 const styles = StyleSheet.create({
@@ -34,6 +31,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 50,
     },
+
     indicator: {
         height: 10,
         width: 10,
@@ -41,10 +39,10 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(255,255,255,0.5)',
         marginHorizontal: 3,
     },
+
     indicatorActive: {
-        backgroundColor: '#fff',
-        width: 12,
+        backgroundColor: '#ffffff',
         height: 12,
-        borderRadius: 20,
-    }
-})
+        width: 12,
+    },
+});

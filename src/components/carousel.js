@@ -1,20 +1,13 @@
-import React, { useRef, useState } from 'react'
-import { Dimensions, FlatList, Image, StyleSheet, Text, View } from 'react-native'
+import React, { useRef, useState } from 'react';
+import { Dimensions, FlatList, Image, StyleSheet, View } from 'react-native';
 import Indicators from './indicators';
-import { images } from '../commons/models'
 
+const renderItem = ({ item }) => <Image source={item} style={styles.image} />;
 
-
-const renderItem = ({ item }) => <Image source={item} style={styles.image} />
-
-const { height, width } = Dimensions.get("window")
-const CAROUSEL_HEIGHT_THRESHOLD = 3
+const { height, width } = Dimensions.get('window');
+const CAROUSEL_HEIGHT_THRESHOLD = 3;
 const HEIGHT = height / CAROUSEL_HEIGHT_THRESHOLD;
-
-
-
-export default function Carousel() {
-
+export default function Carousel({ images }) {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const onViewableItemsChanged = useRef(({ viewableItems }) => {
@@ -29,19 +22,20 @@ export default function Carousel() {
         viewAreaCoveragePercentThreshold: 50,
     });
 
-
     return (
         <View style={styles.container}>
             <FlatList
                 horizontal={true}
+                showsHorizontalScrollIndicator={false}
                 data={images}
                 decelerationRate="fast"
                 pagingEnabled={true}
                 removeClippedSubviews={true}
+                bounces={false}
                 maxToRenderPerBatch={1}
-                showsHorizontalScrollIndicator={false}
                 initialNumToRender={1}
                 windowSize={1}
+                snapToInterval={width}
                 keyExtractor={(_, index) => index.toString()}
                 renderItem={renderItem}
                 onViewableItemsChanged={onViewableItemsChanged.current}
@@ -52,12 +46,9 @@ export default function Carousel() {
                     index,
                 })}
             />
-
             <Indicators carouselSize={images.length} currentIndex={currentIndex} />
-
-
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
@@ -71,6 +62,5 @@ const styles = StyleSheet.create({
     image: {
         height: HEIGHT,
         width: width,
-
-    }
-})
+    },
+});
