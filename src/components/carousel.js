@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import { Dimensions, FlatList, StyleSheet, Text, View } from 'react-native'
+import Indicators from './indicators';
 import { P } from './typography';
 
 const data = [
@@ -43,8 +44,24 @@ const HEIGHT = height / CAROUSEL_HEIGHT_THRESHOLD;
 
 
 export default function Carousel() {
+
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const onViewableItemsChanged = useRef(({ viewableItems }) => {
+        const viewableItem = viewableItems[0];
+        if (viewableItem) {
+            const { index } = viewableItems[0];
+            setCurrentIndex(index);
+        }
+    });
+
+    const viewabilityConfig = useRef({
+        viewAreaCoveragePercentThreshold: 50,
+    });
+
+
     return (
-        <View>
+        <View style={styles.container}>
             <FlatList
                 horizontal={true}
                 data={data}
@@ -57,9 +74,26 @@ export default function Carousel() {
                 windowSize={1}
                 keyExtractor={(_, index) => index.toString()}
                 renderItem={renderItem}
+                onViewableItemsChanged={onViewableItemsChanged.current}
+                viewabilityConfig={viewabilityConfig.current}
+                getItemLayout={(_, index) => ({
+                    length: width,
+                    offset: width * index,
+                    index,
+                })}
             />
+
+            <Indicators carouselSize={data.length} currentIndex={currentIndex} />
+
         </View>
     )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    container: {
+        height: HEIGHT,
+        width: '100%',
+        position: 'relative',
+        alignItems: 'center',
+    }
+})
