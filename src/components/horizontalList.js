@@ -1,12 +1,12 @@
 import React from 'react'
 import { FlatList, StyleSheet, Text, View } from 'react-native'
 
-export default function horizontalList({ keyExtractor, data, renderItem, itemSeparator }) {
+export default function horizontalList({ keyExtractor, data, renderItem, style, itemSeparator }) {
 
 
 
     return (
-        <View style={styles.container}>
+        <View style={{ ...styles.container, ...style }}>
             <FlatList
                 horizontal
                 showsVerticalScrollIndicator={false}

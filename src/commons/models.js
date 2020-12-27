@@ -47,7 +47,7 @@ export const popularEatries = [
         liked: false,
         name: 'Osu Papaye',
         location: 'Osu Oxford Street',
-        rating: 0,
+        rating: 3.2,
         image: require('../../assets/images/asparagus.jpg')
     },
 
