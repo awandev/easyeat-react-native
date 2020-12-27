@@ -1,5 +1,5 @@
 import React from 'react'
-import { FlatList, StyleSheet, Text, View } from 'react-native'
+import { Dimensions, FlatList, StyleSheet, Text, View } from 'react-native'
 import { P } from './typography';
 
 const data = [
@@ -23,10 +23,23 @@ const data = [
 ];
 
 const renderItem = ({ item }) => (
-    <View style={{ backgroundColor: item.color }}>
+    <View
+        style={
+            {
+                backgroundColor: item.color,
+                height: HEIGHT,
+                width: width,
+                justifyContent: 'center',
+            }
+        } >
         <P>{item.value}</P>
     </View>
 );
+
+const { height, width } = Dimensions.get("window")
+const CAROUSEL_HEIGHT_THRESHOLD = 3
+const HEIGHT = height / CAROUSEL_HEIGHT_THRESHOLD;
+
 
 
 export default function Carousel() {
@@ -39,6 +52,7 @@ export default function Carousel() {
                 pagingEnabled={true}
                 removeClippedSubviews={true}
                 maxToRenderPerBatch={1}
+                showsHorizontalScrollIndicator={false}
                 initialNumToRender={1}
                 windowSize={1}
                 keyExtractor={(_, index) => index.toString()}
