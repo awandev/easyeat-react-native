@@ -1,41 +1,11 @@
 import React, { useRef, useState } from 'react'
-import { Dimensions, FlatList, StyleSheet, Text, View } from 'react-native'
+import { Dimensions, FlatList, Image, StyleSheet, Text, View } from 'react-native'
 import Indicators from './indicators';
-import { P } from './typography';
+import { images } from '../commons/models'
 
-const data = [
-    {
-        value: 1,
-        color: "red"
-    },
-    {
-        value: 2,
-        color: "blue",
-    },
-    {
-        value: 3,
-        color: "yellow",
-    },
-    {
-        value: 4,
-        color: "green",
-    }
 
-];
 
-const renderItem = ({ item }) => (
-    <View
-        style={
-            {
-                backgroundColor: item.color,
-                height: HEIGHT,
-                width: width,
-                justifyContent: 'center',
-            }
-        } >
-        <P>{item.value}</P>
-    </View>
-);
+const renderItem = ({ item }) => <Image source={item} style={styles.image} />
 
 const { height, width } = Dimensions.get("window")
 const CAROUSEL_HEIGHT_THRESHOLD = 3
@@ -64,7 +34,7 @@ export default function Carousel() {
         <View style={styles.container}>
             <FlatList
                 horizontal={true}
-                data={data}
+                data={images}
                 decelerationRate="fast"
                 pagingEnabled={true}
                 removeClippedSubviews={true}
@@ -83,7 +53,8 @@ export default function Carousel() {
                 })}
             />
 
-            <Indicators carouselSize={data.length} currentIndex={currentIndex} />
+            <Indicators carouselSize={images.length} currentIndex={currentIndex} />
+
 
         </View>
     )
@@ -95,5 +66,11 @@ const styles = StyleSheet.create({
         width: '100%',
         position: 'relative',
         alignItems: 'center',
+    },
+
+    image: {
+        height: HEIGHT,
+        width: width,
+
     }
 })
