@@ -1,12 +1,12 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { H4, P } from './typography'
-export default function SectionHeader() {
+export default function SectionHeader({ title, linkText, onLinkPress }) {
     return (
         <View style={styles.container}>
-            <H4 style={styles.titleText}>popular Section</H4>
-            <TouchableOpacity>
-                <P style={styles.linkText}>View all</P>
+            <H4 style={styles.titleText}>{title}</H4>
+            <TouchableOpacity onPress={onLinkPress}>
+                <P style={styles.linkText}>{linkText || "View all"}</P>
             </TouchableOpacity>
         </View>
     )

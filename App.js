@@ -31,6 +31,7 @@ import CategoryList from './src/components/categoryList';
 import SectionHeader from './src/components/sectionHeader';
 import PopularPlaceItem from './src/components/popularPlaceItem';
 import PopularEatriesList from './src/components/popularEatriesList';
+import TrendingList from './src/components/trendingList';
 
 const App = () => {
   return (
@@ -45,7 +46,7 @@ const App = () => {
           <SearchBar />
           <CategoryList />
           <PopularEatriesList />
-
+          <TrendingList />
 
         </ScrollView>
       </SafeAreaView>
