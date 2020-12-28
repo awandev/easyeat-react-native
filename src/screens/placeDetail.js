@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import Fullscreen from '../components/fullscreen'
 import PlaceDetailHeader from '../components/placeDetailHeader'
 import PlaceInfo from '../components/placeInfo'
+import PlacePaging from '../components/placePaging'
 
 export default function PlaceDetail() {
     return (
@@ -14,6 +15,9 @@ export default function PlaceDetail() {
                 <PlaceDetailHeader />
 
                 <PlaceInfo />
+
+                {/* place content going here */}
+                <PlacePaging />
             </ScrollView>
         </Fullscreen>
     )
